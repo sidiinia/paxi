@@ -136,9 +136,9 @@ func main() {
 	//before_total := time.Now()
 
 	putCommandClassicPaxos(writers, readers, leader)
-	fmt.Println("Sydnnnenny hi how are you??")
-	time.Sleep(10000000000)
-	fmt.Println("Sleep over...")
+	//fmt.Println("Sydnnnenny hi how are you??")
+	//time.Sleep(10000000000)
+	//fmt.Println("Sleep over...")
 	getCommandClassicPaxos(writers, readers, leader)
 
 

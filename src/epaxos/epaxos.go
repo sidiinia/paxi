@@ -275,7 +275,7 @@ func (r *Replica) run() {
 	dlog.Println("Waiting for client connections")
 
 	go r.WaitForClientConnections()
-
+	r.Exec = true
 	if r.Exec {
 		go r.executeCommands()
 	}

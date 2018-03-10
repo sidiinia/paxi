@@ -94,20 +94,20 @@ func (c *Command) Execute(st *State) Value {
 		   binary.LittleEndian.PutUint64(value[:], uint64(c.V))
 		   st.DB.Set(key[:], value[:], nil)
 
-		/*dlog.Println("PUT command executed ")
-		st.Store[c.K] = c.V
+		dlog.Println("PUT command executed ")
+		return c.V
+		/*st.Store[c.K] = c.V
 		dlog.Println(fmt.Sprintf("state after PUT: %d\n", st.Store[c.K]))
 		return c.V*/
 
 	case GET:
-		dlog.Println("GET command executed ")
+		dlog.Println("GET command executing...")
 		/*if val, present := st.Store[c.K]; present {
 			dlog.Println(fmt.Sprintf("state after GET: %d\n", val))
 			return val
 		}*/
 		binary.LittleEndian.PutUint64(key[:], uint64(c.K))
 		val, err := st.DB.Get(key[:], nil)
-		fmt.Println("%s", err)
 		if err == nil {
 			val1 := binary.LittleEndian.Uint64(val)
 			fmt.Println("in state.go get v is ", Value(val1))

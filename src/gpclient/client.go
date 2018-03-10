@@ -134,7 +134,7 @@ func simulatedClient(rlReply *masterproto.GetReplicaListReply, leader int, readi
 	}
 
 	id := int32(*idStart)
-	args := genericsmrproto.Propose{id, state.Command{state.PUT, 0, 0}}
+	args := genericsmrproto.Propose{id, state.Command{state.PUT, 0, 0}, 0}
 
 	n := *reqsNb
 
@@ -142,7 +142,7 @@ func simulatedClient(rlReply *masterproto.GetReplicaListReply, leader int, readi
 
 		before := time.Now()
 
-		args.ClientId = id
+		args.CommandId = id
 		args.Command.K = state.Key(karray[i])
 
 		if !*fast {
@@ -195,7 +195,7 @@ func waitForReplies(reader *bufio.Reader, repliesChan chan int32) {
 			//fmt.Println("Error when reading from replica:", err)
 			//continue
 		}
-		repliesChan <- reply.Instance
+		repliesChan <- reply.CommandId
 	}
 }
 
