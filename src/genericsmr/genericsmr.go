@@ -77,7 +77,7 @@ func NewReplica(id int, peerAddrList []string, thrifty bool, exec bool, dreply b
 		make([]*bufio.Writer, len(peerAddrList)),
 		make([]bool, len(peerAddrList)),
 		nil,
-		state.InitState(),
+		state.InitState(id),
 		make(chan *Propose, CHAN_BUFFER_SIZE),
 		make(chan *Beacon, CHAN_BUFFER_SIZE),
 		false,
