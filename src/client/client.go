@@ -62,6 +62,11 @@ func main() {
 		log.Fatalf("Error making the GetReplicaList RPC")
 	}
 
+	fmt.Println("---------------------------")
+	fmt.Println(rlReply.ReplicaList)
+	fmt.Println("---------------------------")
+
+
 	N = len(rlReply.ReplicaList)
 	servers := make([]net.Conn, N)
 	readers := make([]*bufio.Reader, N)
@@ -108,6 +113,8 @@ func main() {
 
 	for i := 0; i < N; i++ {
 		var err error
+		fmt.Println("Connecting to")
+		fmt.Println(rlReply.ReplicaList[i])
 		servers[i], err = net.Dial("tcp", rlReply.ReplicaList[i])
 		if err != nil {
 			log.Printf("Error connecting to replica %d\n", i)

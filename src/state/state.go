@@ -93,9 +93,9 @@ func (c *Command) Execute(st *State) Value {
 		   /*binary.BigEndian.PutUint64(key[:], uint64(c.K))
 		   binary.BigEndian.PutUint64(value[:], uint64(c.V))
 		   st.DB.Put(key[:], value[:], nil)*/
-		st.DB.Put(uint64(c.K), uint64(c.V), nil)
-
-		dlog.Println("PUT command executed: key: ", c.K, " value: ", c.V)
+		//st.DB.Put(uint64(c.K), uint64(c.V), nil)
+		//
+		//dlog.Println("PUT command executed: key: ", c.K, " value: ", c.V)
 		//defer st.DB.Close()
 		return c.V
 		/*st.Store[c.K] = c.V
@@ -119,12 +119,12 @@ func (c *Command) Execute(st *State) Value {
 			//defer st.DB.Close()
 			return Value(val1)  // returns the correct number here
 		}*/
-		val, err := st.DB.Get(uint64(c.K), nil)
-		if err == nil {
-			fmt.Println("in state.go get v is ", Value(val))
-			fmt.Println("finished GET")
-			return Value(val)  // returns the correct number here
-		}
+		//val, err := st.DB.Get(uint64(c.K), nil)
+		//if err == nil {
+		//	fmt.Println("in state.go get v is ", Value(val))
+		//	fmt.Println("finished GET")
+		//	return Value(val)  // returns the correct number here
+		//}
 	}
 
 	defer st.DB.Close()
