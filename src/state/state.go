@@ -3,11 +3,11 @@ package state
 import (
 //		"sync"
 	//"fmt"
-	"github.com/golang/leveldb"
+	"github.com/syndtr/goleveldb/leveldb"
 	//"encoding/binary"
 	//"fmt"
 	"fmt"
-	"encoding/binary"
+	//"encoding/binary"
 	"strconv"
 	"dlog"
 )
@@ -43,7 +43,7 @@ type State struct {
 
 func InitState(id int) *State {
 	   rs := strconv.Itoa(id)
-	   d, err := leveldb.Open("/Users/shannon/Desktop/dbtest" + rs, nil)
+	   d, err := leveldb.OpenFile("/Users/shannon/Desktop/dbtest" + rs, nil)
 
 	   if err != nil {
 	       fmt.Printf("Leveldb open failed: %v\n", err)
@@ -82,7 +82,7 @@ func IsRead(command *Command) bool {
 func (c *Command) Execute(st *State) Value {
 	fmt.Printf("Executing (%d, %d)\n", c.K, c.V)
 
-	var key, value [8]byte
+	//var key, value [8]byte
 
 	//    st.mutex.Lock()
 	//    defer st.mutex.Unlock()
@@ -90,11 +90,13 @@ func (c *Command) Execute(st *State) Value {
 	switch c.Op {
 	case PUT:
 
-		   binary.LittleEndian.PutUint64(key[:], uint64(c.K))
-		   binary.LittleEndian.PutUint64(value[:], uint64(c.V))
-		   st.DB.Set(key[:], value[:], nil)
+		   /*binary.BigEndian.PutUint64(key[:], uint64(c.K))
+		   binary.BigEndian.PutUint64(value[:], uint64(c.V))
+		   st.DB.Put(key[:], value[:], nil)*/
+		st.DB.Put(uint64(c.K), uint64(c.V), nil)
 
-		dlog.Println("PUT command executed ")
+		dlog.Println("PUT command executed: key: ", c.K, " value: ", c.V)
+		//defer st.DB.Close()
 		return c.V
 		/*st.Store[c.K] = c.V
 		dlog.Println(fmt.Sprintf("state after PUT: %d\n", st.Store[c.K]))
@@ -106,16 +108,25 @@ func (c *Command) Execute(st *State) Value {
 			dlog.Println(fmt.Sprintf("state after GET: %d\n", val))
 			return val
 		}*/
-		binary.LittleEndian.PutUint64(key[:], uint64(c.K))
+		/*binary.BigEndian.PutUint64(key[:], uint64(c.K))
+		fmt.Println("key[:] is ", key[:])
 		val, err := st.DB.Get(key[:], nil)
+
 		if err == nil {
-			val1 := binary.LittleEndian.Uint64(val)
+			val1 := binary.BigEndian.Uint64(val)
 			fmt.Println("in state.go get v is ", Value(val1))
 			fmt.Println("finished GET")
-			defer st.DB.Close()
+			//defer st.DB.Close()
 			return Value(val1)  // returns the correct number here
+		}*/
+		val, err := st.DB.Get(uint64(c.K), nil)
+		if err == nil {
+			fmt.Println("in state.go get v is ", Value(val))
+			fmt.Println("finished GET")
+			return Value(val)  // returns the correct number here
 		}
 	}
 
+	defer st.DB.Close()
 	return NIL
 }
