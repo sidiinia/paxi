@@ -14,7 +14,7 @@ import (
 )
 
 var portnum *int = flag.Int("port", 7087, "Port # to listen on. Defaults to 7087")
-var numNodes *int = flag.Int("N", 3, "Number of replicas. Defaults to 3.")
+var numNodes *int = flag.Int("N", 2, "Number of replicas. Defaults to 3.")
 
 type Master struct {
 	N        int
@@ -65,6 +65,7 @@ func (master *Master) run() {
 		}
 		master.lock.Unlock()
 		time.Sleep(100000000)
+		fmt.Println(master.nodeList)
 	}
 	time.Sleep(2000000000)
 
@@ -73,7 +74,9 @@ func (master *Master) run() {
 		var err error
 		addr := fmt.Sprintf("%s:%d", master.addrList[i], master.portList[i]+1000)
 		master.nodes[i], err = rpc.DialHTTP("tcp", addr)
+		fmt.Println("addr is", addr, "master node[i] is ", master.nodes[i])
 		if err != nil {
+			fmt.Println(err)
 			log.Fatalf("Error connecting to replica %d\n", i)
 		}
 		master.leader[i] = false
