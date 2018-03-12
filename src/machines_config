@@ -6,6 +6,11 @@ CA: 13.57.181.87
 VA: 52.23.250.113
 OR: 35.160.222.50
 JP: 13.114.141.253
-EU: 52.18.89.143
+EU: 34.245.19.61
 
 scp -r -i ~/Downloads/cloudCA.pem paxi/ ec2-user@52.53.168.42:~/
+scp -r -i ~/Downloads/cloudCA.pem paxi/ ec2-user@:13.57.181.87~/
+scp -r -i ~/Downloads/cloudCA.pem paxi/ ec2-user@:52.23.250.113~/
+scp -r -i ~/Downloads/cloudCA.pem paxi/ ec2-user@35.160.222.50:~/
+scp -r -i ~/Downloads/cloudCA.pem paxi/ ec2-user@13.114.141.253:~/
+scp -r -i ~/Downloads/cloudCA.pem paxi/ ec2-user@52.18.89.143:~/
