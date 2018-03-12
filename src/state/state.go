@@ -43,7 +43,7 @@ type State struct {
 
 func InitState(id int) *State {
 	   rs := strconv.Itoa(id)
-	   d, err := leveldb.OpenFile("/Users/shannon/Desktop/dbtest" + rs, nil)
+	   d, err := leveldb.OpenFile("/home/ec2-user/paxi/dbtest" + rs, nil)
 
 	   if err != nil {
 	       fmt.Printf("Leveldb open failed: %v\n", err)

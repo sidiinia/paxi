@@ -1,11 +1,15 @@
 master:
-CA: 52.53.168.42
+CA: 54.241.104.240 ec2-54-241-104-240.us-west-1.compute.amazonaws.com
 
 servers:
-CA: 13.57.181.87
-VA: 52.23.250.113
-OR: 35.160.222.50
-JP: 13.114.141.253
-EU: 52.18.89.143
+CA: 54.219.54.153  ec2-54-219-54-153.us-west-1.compute.amazonaws.com
+VA: 34.233.18.177  ec2-34-233-18-177.compute-1.amazonaws.com
+OR: 34.218.148.36  ec2-34-218-148-36.us-west-2.compute.amazonaws.com
+JP: 54.95.150.175  ec2-54-95-150-175.ap-northeast-1.compute.amazonaws.com
+EU: 34.241.11.253  ec2-34-241-11-253.eu-west-1.compute.amazonaws.com
 
 scp -r -i ~/Downloads/cloudCA.pem paxi/ ec2-user@52.53.168.42:~/
+
+running method:
+specify dns instead of ip, i think port num has to be different
+./server -port 7070 -addr ec2-54-219-54-153.us-west-1.compute.amazonaws.com
