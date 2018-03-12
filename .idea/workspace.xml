@@ -11,7 +11,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="client.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="client.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/client.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-135">
@@ -75,7 +75,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="genericsmr.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="genericsmr.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/genericsmr/genericsmr.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="267">
@@ -430,24 +430,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/client.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="104" column="9" lean-forward="false" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#186#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gpaxosproto/gpaxosprotomarsh.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -472,14 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/master/master.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2019">
-          <caret line="125" column="49" lean-forward="false" selection-start-line="125" selection-start-column="45" selection-end-line="125" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/paxos/paxos.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
@@ -492,6 +466,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
           <caret line="42" column="29" lean-forward="false" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/master/master.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2019">
+          <caret line="125" column="49" lean-forward="false" selection-start-line="125" selection-start-column="45" selection-end-line="125" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-196">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="104" column="9" lean-forward="false" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
           <folding />
         </state>
       </provider>
